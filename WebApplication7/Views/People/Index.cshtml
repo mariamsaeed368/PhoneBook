@@ -1,0 +1,125 @@
+﻿@model IEnumerable<WebApplication7.Models.Person>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>People</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+
+            
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PersonId }) |
+
+                <a href="Contacts/ContactList?id=@item.PersonId">View Contacts |</a>
+                <a href="Contacts/Create?id=@item.PersonId">Add Contact</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<h2>Upcoming Birthday</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.birthdayList)
+    {
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.MiddleName
+            </td>
+            <td>
+                @item.DateOfBirth
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+<h2>Update People</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.updated)
+    {
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.MiddleName
+            </td>
+            <td>
+                @item.DateOfBirth
+            </td>
+        </tr>
+
+    }
+
+</table>
